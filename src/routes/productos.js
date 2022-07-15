@@ -6,7 +6,7 @@ const { Contenedor, Producto } = require('../objects/contenedor');
 const productosDB = require('../db/database').mySQLConnection;
 const productos = new Contenedor(productosDB, 'products');
 
-// Devuelve todos los productos
+
 router.get('/', async (req, res) => {
     try {
         const productLista = await productos.getAll();
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-// Recibe y agrega un producto, lo devuelve con su id asignado
+
 router.post('/', async (req, res) => {
     try {
         const { title, price, thumbnail } = req.body;
@@ -35,12 +35,6 @@ router.post('/', async (req, res) => {
     }
 })
 
-
-/*********************************************/
-/************POSTMAN**************************/
-/*********************************************/
-
-// Devuelve un producto según su id
 router.get('/:id', async (req, res) => {
     try {
         const id = Number(req.params.id);
@@ -53,7 +47,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// Recibe y actualiza un producto segun su id
+
 router.put('/:id', async (req, res) => {
     try {
         const { title, price, thumbnail } = req.body;
@@ -71,7 +65,6 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-// Elimina un producto según su id
 router.delete('/:id', async (req, res) => {
     try {
         const id = Number(req.params.id);
